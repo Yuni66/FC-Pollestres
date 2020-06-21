@@ -1,0 +1,26 @@
+%initial-field
+  border: none
+  border-bottom: 1px solid $dark
+  background-color: $white
+
+  &:focus
+    outline: none
+
+$type-list: text tel email url search date time datetime month week number password
+
+@each $type in $type-list
+  [type="#{$type}"]
+    @extend %initial-field
+
+select,
+textarea
+  @extend %initial-field
+
+.form-error
+  outline-color: $color-error
+
+.form-valid
+  outline-color: $color-valid
+
+[type="submit"]
+  font-weight: $fw-regular

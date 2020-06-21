@@ -1,0 +1,41 @@
+.u-spacing
+  +responsive('<large')
+    &-small
+      margin-top: $global-spacing * 2
+      margin-bottom: $global-spacing * 2
+
+    &-medium
+      margin-top: $global-spacing * 4
+      margin-bottom: $global-spacing * 4
+
+    &-large
+      margin-top: $global-spacing * 6
+      margin-bottom: $global-spacing * 6
+
+  +responsive('>=large')
+    &-small
+      margin-top: $global-spacing * 4
+      margin-bottom: $global-spacing * 4
+
+    &-medium
+      margin-top: $global-spacing * 7
+      margin-bottom: $global-spacing * 7
+
+    &-large
+      margin-top: $global-spacing * 12
+      margin-bottom: $global-spacing * 12
+
+.u-hidden
+  display: none
+
+  +responsive('<medium')
+    &-small
+      display: none
+
+  +responsive('>=medium','<large')
+    &-medium
+      display: none
+
+  +responsive('>=huge')
+    &-large
+      display: none
