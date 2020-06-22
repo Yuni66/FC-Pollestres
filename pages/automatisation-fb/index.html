@@ -12,8 +12,9 @@
         <h1>Publications Facebook FC Pollestres</h1>
 
         <form action="" method="post">
-            <div class="form-line">
-                <div class="form-block form-base">
+            <div class="row">
+                <div class="four columns form-block form-base">
+                    <label for="type_publi">Type de publication</label>
                     <select name="type_publi" id="type_publi" required>
                         <option value="" selected disabled></option>
                         <option value="programm">Programme du week-end</option>
@@ -21,12 +22,12 @@
                         <option value="featured">Match à la une</option>
                         <option value="resultmatch">Résultat match à la une</option>
                     </select>
-                    <label for="type_publi">Type de publication</label>
                 </div>
             </div>
 
-            <div class="form-line">
-                <div class="form-block u-hidden" data-annonce="true" data-result="true">
+            <div class="row">
+                <div class="four columns form-block u-hidden" data-annonce="true" data-result="true">
+                    <label for="category">Catégorie</label>
                     <select name="category" id="category" required>
                         <option value="" selected disabled></option>
                         <option value="u7">U7</option>
@@ -38,19 +39,19 @@
                         <option value="seniorsf8">SéniorsFéminines à 8</option>
                         <option value="seniorsf11">SéniorsFéminines R1</option>
                     </select>
-                    <label for="category">Catégorie</label>
                 </div>
             </div>
 
-            <div class="form-line">
-                <div class="form-block u-hidden" data-featured="true">
-                    <input type="text" name="compet" id="compet" placeholder="Exemple : Coupe de France">
+            <div class="row">
+                <div class="four columns form-block u-hidden" data-featured="true">
                     <label for="compet">Type de compétition</label>
+                    <input type="text" name="compet" id="compet" placeholder="Exemple : Coupe de France">
                 </div>
             </div>
 
-            <div class="form-line">
-                <div class="form-block u-hidden" data-annonce="true">
+            <div class="row">
+                <div class="two columns form-block u-hidden" data-annonce="true">
+                    <label for="day">Jour</label>
                     <select name="day" id="day" required>
                         <option value="" selected disabled></option>
                         <option value="samedi">Samedi</option>
@@ -61,10 +62,10 @@
                         <option value="jeudi">Jeudi</option>
                         <option value="vendredi">Vendredi</option>
                     </select>
-                    <label for="day">Jour</label>
                 </div>
 
-                <div class="form-block u-hidden" data-annonce="true">
+                <div class="two columns form-block u-hidden" data-annonce="true">
+                    <label for="date">Date</label>
                     <select name="date" id="date" required>
                         <option value="" selected disabled></option>
                         <option value="1">1</option>
@@ -99,10 +100,10 @@
                         <option value="30">30</option>
                         <option value="31">31</option>
                     </select>
-                    <label for="date">Date</label>
                 </div>
 
-                <div class="form-block u-hidden" data-annonce="true">
+                <div class="two columns form-block u-hidden" data-annonce="true">
+                    <label for="month">Mois</label>
                     <select name="month" id="month" required>
                         <option value="" selected disabled></option>
                         <option value="Janvier">Janvier</option>
@@ -118,10 +119,10 @@
                         <option value="Novembre">Novembre</option>
                         <option value="Décembre">Décembre</option>
                     </select>
-                    <label for="month">Mois</label>
                 </div>
 
-                <div class="form-block u-hidden" data-annonce="true">
+                <div class="two columns form-block u-hidden" data-annonce="true">
+                    <label for="hour">Heure</label>
                     <select name="hour" id="hour" required>
                         <option value="" selected disabled></option>
                         <option value="10">10</option>
@@ -138,13 +139,12 @@
                         <option value="21">21</option>
                         <option value="22">22</option>
                     </select>
-                    <label for="hour">Heure</label>
                 </div>
 
-                <div class="form-block u-hidden" data-annonce="true">
+                <div class="two columns form-block u-hidden" data-annonce="true">
+                    <label for="minuts">Minutes</label>
                     <select name="minuts" id="minuts" required>
-                        <option value="" selected disabled></option>
-                        <option value="00">00</option>
+                        <option value="00" selected>00</option>
                         <option value="05">05</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
@@ -157,74 +157,79 @@
                         <option value="50">50</option>
                         <option value="55">55</option>
                     </select>
-                    <label for="minuts">Minutes</label>
                 </div>
             </div>
 
-            <div class="form-line">
+            <div class="row">
                 <div class="form-block u-hidden" data-annonce="true">
-                    <input id="domicile" name="location" type="radio" value="domicile" checked>
-                    <label for="domicile">Domicile</label>
+                    <div class="two columns">
+                        <input id="domicile" name="location" type="radio" value="domicile">
+                        <label for="domicile">Domicile</label>
+                    </div>
 
-                    <input id="exterieur" name="location" type="radio" value="exterieur">
-                    <label for="exterieur">Extérieur</label>
+                    <div class="two columns">
+                        <input id="exterieur" name="location" type="radio" value="exterieur">
+                        <label for="exterieur">Extérieur</label>
+                    </div>
                 </div>
             </div>
 
-            <div class="form-line">
-                <div class="form-block u-hidden" data-result="true">
-                    <input type="text" name="ourresult" id="ourresult">
+            <div class="row">
+                <div class="two columns form-block u-hidden" data-result="true">
                     <label for="ourresult">Buts marqués</label>
+                    <input type="text" name="ourresult" id="ourresult">
                 </div>
-                <div class="form-block u-hidden" data-result="true">
-                    <input type="text" name="thereresult" id="thereresult">
+                <div class="two columns form-block u-hidden" data-result="true">
                     <label for="thereresult">Buts encaissés</label>
+                    <input type="text" name="thereresult" id="thereresult">
                 </div>
             </div>
 
-            <div class="form-line">
-                <div class="form-block u-hidden" data-annonce="true" data-result="true">
-                    <input type="text" name="adverse" id="adverse">
+            <div class="row">
+                <div class="four columns form-block u-hidden" data-annonce="true" data-result="true">
                     <label for="adverse">Adversaire</label>
+                    <input type="text" name="adverse" id="adverse">
                 </div>
             </div>
 
-            <div class="form-block u-hidden" data-annonce="true" data-result="true">
-                <select name="partners" id="partners" required>
-                    <option value="" selected disabled></option>
-                    <option value="airforcechauffage">Air Force Chauffage</option>
-                    <option value="ambianceenergie">Ambiance énergie</option>
-                    <option value="aqualand">Aqualand</option>
-                    <option value="aquatika">Aquatika</option>
-                    <option value="audreycoiffure">Audrey Coiffure</option>
-                    <option value="autopieces66">Auto pièces 66</option>
-                    <option value="azincendie">AZ incendie</option>
-                    <option value="cashgraines">Cash graines</option>
-                    <option value="emblematik">Emblematik</option>
-                    <option value="espacefoot">Espace foot</option>
-                    <option value="etsserran">Ets Serran</option>
-                    <option value="galiono">Galiono</option>
-                    <option value="gpconstruction">GP Construction</option>
-                    <option value="hypertroc">Hyper troc</option>
-                    <option value="jmt">JMT alimentation animale</option>
-                    <option value="lacomvermeille">La com' Vermeille</option>
-                    <option value="lavapederivesaltes">La Vape de Rivesaltes</option>
-                    <option value="ladyboy">Lady Boy</option>
-                    <option value="m2ap">M2AP</option>
-                    <option value="meublesalvarez">Meubles Alvarez</option>
-                    <option value="peinturesguix">Peintures Guix</option>
-                    <option value="perpignancampingcar">Perpignan Camping-car</option>
-                    <option value="pilpoiltoilettage">Pil'poil Toilettage</option>
-                    <option value="piscinespaland">Piscine Spa Land</option>
-                    <option value="pollestresimmo">Pollestres immo</option>
-                    <option value="vapotfrance">Vapot'France</option>
-                    <option value="visioptic">Visioptic</option>
-                </select>
-                <label for="partners">Partenaire présenté</label>
+            <div class="row">
+                <div class="four columns form-block u-hidden" data-annonce="true" data-result="true">
+                    <label for="partners">Partenaire présenté</label>
+                    <select name="partners" id="partners" required>
+                        <option value="" selected disabled></option>
+                        <option value="airforcechauffage">Air Force Chauffage</option>
+                        <option value="ambianceenergie">Ambiance énergie</option>
+                        <option value="aqualand">Aqualand</option>
+                        <option value="aquatika">Aquatika</option>
+                        <option value="audreycoiffure">Audrey Coiffure</option>
+                        <option value="autopieces66">Auto pièces 66</option>
+                        <option value="azincendie">AZ incendie</option>
+                        <option value="cashgraines">Cash graines</option>
+                        <option value="emblematik">Emblematik</option>
+                        <option value="espacefoot">Espace foot</option>
+                        <option value="etsserran">Ets Serran</option>
+                        <option value="galiono">Galiono</option>
+                        <option value="gpconstruction">GP Construction</option>
+                        <option value="hypertroc">Hyper troc</option>
+                        <option value="jmt">JMT alimentation animale</option>
+                        <option value="lacomvermeille">La com' Vermeille</option>
+                        <option value="lavapederivesaltes">La Vape de Rivesaltes</option>
+                        <option value="ladyboy">Lady Boy</option>
+                        <option value="m2ap">M2AP</option>
+                        <option value="meublesalvarez">Meubles Alvarez</option>
+                        <option value="peinturesguix">Peintures Guix</option>
+                        <option value="perpignancampingcar">Perpignan Camping-car</option>
+                        <option value="pilpoiltoilettage">Pil'poil Toilettage</option>
+                        <option value="piscinespaland">Piscine Spa Land</option>
+                        <option value="pollestresimmo">Pollestres immo</option>
+                        <option value="vapotfrance">Vapot'France</option>
+                        <option value="visioptic">Visioptic</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="form-line">
-                <a class="btn btn-dark">Valider</a>
+            <div class="row">
+                <a class="btn btn--dark">Valider</a>
             </div>
         </form>
     </div>
@@ -234,15 +239,15 @@
             <div>
                 <pre class="list">
                 </pre>
-                <div class="agenda_ok">
-                    <a data-target="OK" class="mui-btn mui-btn">Agenda Terminé ?</a>
+                <div class="agenda--ok u-hidden">
+                    <a data-target="OK" class="btn btn--light">Agenda Terminé ?</a>
                 </div>
             </div>
             <div>
                 <div class="img"></div>
             </div>
         </div>
-    </div>
+    </div><br /><br /><br />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../src/js/auto-publish.js"></script>

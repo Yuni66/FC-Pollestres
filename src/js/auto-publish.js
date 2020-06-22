@@ -29,12 +29,160 @@ function typePubli(dataType, blockText, libelle) {
             blockText.html('[Résultat] L\'affiche du jour<br />');
             break;
     }
-};
+}
+
+function clean() {
+    $('form input:not([type="radio"]), form select:not(#type_publi)').val('');
+    $('form input[name="location"]').prop('checked', false);
+}
+
+function submit(type, cible) {
+    let line = '';
+    let result, image;
+
+    let category = $('#category option:selected').text();
+    let compet = $('#compet option:selected').text();
+
+    let day = $('#day option:selected').text();
+    let date = $('#date option:selected').text();
+    let month = $('#month option:selected').text();
+    let hour = $('#hour option:selected').text();
+    let minuts = $('#minuts option:selected').text();
+    let location = $('input[name="location"]:checked').val();
+    let our = parseInt($('#ourresult').val());
+    let there = parseInt($('#thereresult').val());
+    let adverse = $('#adverse').val();
+    let partner = $('#partners').val();
+
+    console.log(partner);
+
+    if (partner !== null) {
+        image = '<img src="../../dist/img/fcp/partenaires/' + type + '/' + type + '-' + partner +'.jpg">';
+    }
+
+    if (type === 'programm' || type === 'result') {
+        $('.agenda--ok').removeClass('u-hidden');
+    }
+
+    // Analyser les résultats
+    switch (type) {
+        case 'programm':
+            if (category !== '' && day !== '' && date !== '' && month !== '' && hour !== '' && minuts !== '' && adverse !== '' && location !== '') {
+
+                clean();
+
+                line += '#' + category + ' | ' + day + ' ' + date + ' ' + month + ' à ' + hour + 'H' + minuts + ' : ';
+
+                if (location === 'domicile') {
+                    line += 'FC Pollestres - ' + adverse;
+                } else if (location === 'exterieur') {
+                    line += adverse + ' - FC Pollestres';
+                }
+                cible.append(line + '<br />');
+
+                if (image !== '') {
+                    $('.img').html(image);
+                }
+            } else {
+                $('.message').html('Veuillez remplir tous les champs');
+            }
+
+            break;
+
+        case 'result':
+            if (category !== '' && our !== '' && there !== '' && adverse !== '') {
+
+                clean();
+
+                if (our > there) {
+                    result = 'Victoire ' + our + ' à ' + there + ' contre ' + adverse;
+                } else if (our === there) {
+                    result = 'Match nul ' + our + ' à ' + there + ' contre ' + adverse;
+                } else {
+                    result = 'Défaite ' + there + ' à ' + our + ' contre ' + adverse;
+                }
+                cible.append('#' + category + ' | ' + result + '<br />');
+
+                if (image !== '') {
+                    $('.img').html(image);
+                }
+            } else {
+                $('.message').html('Veuillez remplir tous les champs');
+            }
+
+            break;
+
+        case 'featured':
+            if (category !== '' && day !== '' && date !== '' && month !== '' && hour !== '' && minuts !== '' && adverse !== '' && location !== '') {
+
+                clean();
+
+                if ($('#compet').val() === '') {
+                    line = '<br />';
+                } else {
+                    line = ' | ' + compet + '<br />';
+                }
+
+                line += '#' + category + ' | ' + day + ' ' + date + ' ' + month + ' à ' + hour + 'H' + minuts + ' : ';
+
+                if (location === 'domicile') {
+                    line += 'FC Pollestres - ' + adverse;
+                } else if (location === 'exterieur') {
+                    line += adverse + ' - FC Pollestres';
+                }
+                cible.append(line + '<br /><br />Venez nombreux pour nous encourager lors de cette rencontre décisive !<br />Ensemble, nous ne faisons qu\'un !! #AllezPollestres');
+
+                if (image !== '') {
+                    $('.img').html(image);
+                }
+            } else {
+                $('.message').html('Veuillez remplir tous les champs');
+            }
+
+            break;
+
+        case 'resultmatch':
+            if (category !== '' && our !== '' && there !== '' && adverse !== '') {
+
+                clean();
+
+                if (our > there) {
+                    result = 'Fantastique victoire ' + our + ' à ' + there + ' contre ' + adverse + ' !!';
+                } else if (our === there) {
+                    result = 'Superbe combat livré par notre équipe, qui nous permet de revenir avec un match nul ' + our + ' à ' + there + ' contre ' + adverse + '.';
+                } else {
+                    result = 'Nous n\'avons pas démérité, malgré une défaite ' + there + ' à ' + our + ' contre ' + adverse + '.';
+                }
+                cible.append('#' + category + ' | ' + result + '<br />');
+                cible.append('<br />Merci d\'avoir été aussi nombreux à être venus nous supporter ! #AllezPollestres');
+
+                if (image !== '') {
+                    $('.img').html(image);
+                }
+            } else {
+                $('.message').html('Veuillez remplir tous les champs');
+            }
+
+            break;
+    }
+}
+
+function agendaTermine(type, cible) {
+    switch (type) {
+        case 'programm':
+            cible.append('<br />Venez encourager nos équipes ! #AllezPollestres');
+            break;
+        case 'result':
+            cible.append('<br />Bravo à tous ! #AllezPollestres');
+            break;
+    }
+}
 
 $(function() {
 
     // Init formulaire
-    $('#type_publi').on('change', function() {
+    $('#type_publi').on('change', function(e) {
+        e.preventDefault();
 
         $('.list').html('');
         let preExport = $('.list');
@@ -49,110 +197,19 @@ $(function() {
 
         typePubli(typePublication, preExport, libelleTypePublication);
 
-        $('.btn-dark').click(function(e){
-            e.preventDefault;
+        $('.btn--dark').click(function(){
 
-            let line = '';
-            let result;
-
-            let category = $('#category option:selected').text();
-            let compet = $('#compet option:selected').text();
-
-            let day = $('#day option:selected').text();
-            let date = $('#date option:selected').text();
-            let month = $('#month option:selected').text();
-            let hour = $('#hour option:selected').text();
-            let minuts = $('#minuts option:selected').text();
-            let location = $('input[name=location]:checked').val();
-            let our = parseInt($('#ourresult').val());
-            let there = parseInt($('#thereresult').val());
-            let adverse = $('#adverse').val();
-            let partner = $('#partners').val();
-
-            let image = '<img src="dist/img/fcp/partenaires/' + typePublication + '/' + typePublication + '-' + partner +'.jpg">';
-
-            // Vider les champs
-            $('form input, form select:not(#type_publi)').val('')
-
-            // Analyser les résultats
-            switch (typePublication) {
-                case 'programm':
-                    if (category != '' && day != '' && date != '' && month != '' && hour != '' && minuts != '' && location != '') {
-                        line += '#' + category + ' | ' + day + ' ' + date + '/' + month + ' à ' + hour + 'H' + minuts + ' : ';
-
-                        if (location == 'domicile') {
-                            line += 'FC Pollestres - ' + adverse;
-                        } else if (location == 'exterieur') {
-                            line += adverse + ' - FC Pollestres';
-                        }
-                        preExport.append(line + '<br />');
-
-                        $('.img').html(image);
-                    }
-
-                    break;
-
-                case 'result':
-                    if (category != '' && our != '' && there != '' && adverse != '') {
-                        if (our > there) {
-                            result = 'Victoire ' + our + ' à ' + there + ' contre ' + adverse;
-                        } else if (our == there) {
-                            result = 'Match nul ' + our + ' à ' + there + ' contre ' + adverse;
-                        } else {
-                            result = 'Défaite ' + there + ' à ' + our + ' contre ' + adverse;
-                        }
-                        preExport.append('#' + category + ' | ' + result + '<br />');
-
-                        $('.img').html(image);
-                    }
-
-                    break;
-
-                case 'featured':
-                    if ($('#compet').val() == '') {
-                        line = '<br />';
-                    } else {
-                        line = ' | ' + $('#compet').val() + '<br />';
-                    }
-
-                    if (category != '' && day != '' && date != '' && month != '' && hour != '' && minuts != '' && location != '') {
-
-                        line += '#' + category + ' | ' + day + ' ' + date + '/' + month + ' à ' + hour + 'H' + minuts + ' : ';
-
-                        if (location == 'domicile') {
-                            line += 'FC Pollestres - ' + adverse;
-                        } else if (location == 'exterieur') {
-                            line += adverse + ' - FC Pollestres';
-                        }
-                        preExport.append(line + '<br /><br />Venez nombreux pour nous encourager lors de cette rencontre décisive !<br />Ensemble, nous ne faisons qu\'un !! #AllezPollestres');
-
-                        $('.img').html(image);
-                    }
-
-                    break;
-
-                case 'resultmatch':
-                    if (category != '' && our != '' && there != '' && adverse != '') {
-                        if (our > there) {
-                            result = 'Fantastique victoire ' + our + ' à ' + there + ' contre ' + adverse + ' !!';
-                        } else if (our == there) {
-                            result = 'Superbe combat livré par notre équipe, qui nous permet de revenir avec un match nul ' + our + ' à ' + there + ' contre ' + adverse + '.';
-                        } else {
-                            result = 'Nous n\'avons pas démérité, malgré une défaite ' + there + ' à ' + our + ' contre ' + adverse + '.';
-                        }
-                        preExport.append('#' + category + ' | ' + result + '<br />');
-                        preExport.append('<br />Merci d\'avoir été aussi nombreux à être venus nous supporter ! #AllezPollestres');
-
-                        $('.img').html(image);
-                    }
-
-                    break;
-            }
-
-            return false;
-
+            submit(typePublication, preExport);
 
         });
+
+        $('[data-target="OK"]').click(function(){
+
+            agendaTermine(typePublication, preExport);
+            $('.agenda--ok').addClass('u-hidden');
+
+        });
+
 
     });
 

@@ -17,7 +17,9 @@ button
   border-radius: 5px
   font-size: 1.6rem
   border: 1px solid transparent
-  transition: all 0.2s ease-in
+  transition: all 0.3s ease-in
+  cursor: pointer
+  margin-bottom: 2rem
 
   &:hover,
   &:focus
@@ -26,3 +28,24 @@ button
   &--block
     display: block
     width: 100%
+
+  &--dark
+    background-color: $dark
+    color: $white
+    border-color: $dark
+
+    &:hover,
+    &:focus
+      background-color: transparent
+      color: $dark
+
+  &--light
+    background-color: $white
+    color: $dark
+    border-color: $white
+
+    &:hover,
+    &:focus
+      background-color: transparent
+      color: $dark
+      border-color: $dark

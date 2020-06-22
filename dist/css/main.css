@@ -78,6 +78,179 @@ address {
 blockquote {
   margin: 0 0 1rem; }
 
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box; }
+
+/* For devices larger than 550px */
+@media (min-width: 321px) {
+  .column,
+  .columns {
+    margin-left: 4%; }
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0; }
+  .one.column,
+  .one.columns {
+    width: 4.66666666667%; }
+  .two.columns {
+    width: 13.3333333333%; }
+  .three.columns {
+    width: 22%; }
+  .four.columns {
+    width: 30.6666666667%; }
+  .five.columns {
+    width: 39.3333333333%; }
+  .six.columns {
+    width: 48%; }
+  .seven.columns {
+    width: 56.6666666667%; }
+  .eight.columns {
+    width: 65.3333333333%; }
+  .nine.columns {
+    width: 74.0%; }
+  .ten.columns {
+    width: 82.6666666667%; }
+  .eleven.columns {
+    width: 91.3333333333%; }
+  .twelve.columns {
+    width: 100%;
+    margin-left: 0; }
+  .one-third.column {
+    width: 30.6666666667%; }
+  .two-thirds.column {
+    width: 65.3333333333%; }
+  .one-half.column {
+    width: 48%; }
+  /* Offsets */
+  .offset-by-one.column,
+  .offset-by-one.columns {
+    margin-left: 8.66666666667%; }
+  .offset-by-two.column,
+  .offset-by-two.columns {
+    margin-left: 17.3333333333%; }
+  .offset-by-three.column,
+  .offset-by-three.columns {
+    margin-left: 26%; }
+  .offset-by-four.column,
+  .offset-by-four.columns {
+    margin-left: 34.6666666667%; }
+  .offset-by-five.column,
+  .offset-by-five.columns {
+    margin-left: 43.3333333333%; }
+  .offset-by-six.column,
+  .offset-by-six.columns {
+    margin-left: 52%; }
+  .offset-by-seven.column,
+  .offset-by-seven.columns {
+    margin-left: 60.6666666667%; }
+  .offset-by-eight.column,
+  .offset-by-eight.columns {
+    margin-left: 69.3333333333%; }
+  .offset-by-nine.column,
+  .offset-by-nine.columns {
+    margin-left: 78.0%; }
+  .offset-by-ten.column,
+  .offset-by-ten.columns {
+    margin-left: 86.6666666667%; }
+  .offset-by-eleven.column,
+  .offset-by-eleven.columns {
+    margin-left: 95.3333333333%; }
+  .offset-by-one-third.column,
+  .offset-by-one-third.columns {
+    margin-left: 34.6666666667%; }
+  .offset-by-two-thirds.column,
+  .offset-by-two-thirds.columns {
+    margin-left: 69.3333333333%; }
+  .offset-by-one-half.column,
+  .offset-by-one-half.columns {
+    margin-left: 52%; } }
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  white-space: nowrap;
+  background-color: transparent;
+  cursor: pointer;
+  box-sizing: border-box; }
+  .button:hover, .button:focus,
+  button:hover,
+  button:focus,
+  input[type="submit"]:hover,
+  input[type="submit"]:focus,
+  input[type="reset"]:hover,
+  input[type="reset"]:focus,
+  input[type="button"]:hover,
+  input[type="button"]:focus {
+    color: #333;
+    border-color: #888;
+    outline: 0; }
+
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px;
+  box-shadow: none;
+  box-sizing: border-box; }
+  input[type="email"]:hover, input[type="email"]:focus,
+  input[type="number"]:hover,
+  input[type="number"]:focus,
+  input[type="search"]:hover,
+  input[type="search"]:focus,
+  input[type="text"]:hover,
+  input[type="text"]:focus,
+  input[type="tel"]:hover,
+  input[type="tel"]:focus,
+  input[type="url"]:hover,
+  input[type="url"]:focus,
+  input[type="password"]:hover,
+  input[type="password"]:focus,
+  textarea:hover,
+  textarea:focus,
+  select:hover,
+  select:focus {
+    outline: 0; }
+
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  appearance: none; }
+
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline; }
+
+/* Self Clearing Goodness */
+.row:after {
+  content: "";
+  display: table;
+  clear: both; }
+
 li {
   margin: 5px 0; }
 
@@ -123,8 +296,10 @@ body {
 textarea {
   border: none;
   border-bottom: 1px solid #000;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 10px; }
+  background-color: transparent;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 3rem; }
   :focus[type="text"], :focus[type="tel"], :focus[type="email"], :focus[type="url"], :focus[type="search"], :focus[type="date"], :focus[type="time"], :focus[type="datetime"], :focus[type="month"], :focus[type="week"], :focus[type="number"], :focus[type="password"], select:focus,
   textarea:focus {
     outline: none; }
@@ -221,12 +396,29 @@ button {
   border-radius: 5px;
   font-size: 1.6rem;
   border: 1px solid transparent;
-  transition: all 0.2s ease-in; }
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+  margin-bottom: 2rem; }
   .btn:hover, .btn:focus {
     text-decoration: none; }
   .btn--block {
     display: block;
     width: 100%; }
+  .btn--dark {
+    background-color: #000;
+    color: #fff;
+    border-color: #000; }
+    .btn--dark:hover, .btn--dark:focus {
+      background-color: transparent;
+      color: #000; }
+  .btn--light {
+    background-color: #fff;
+    color: #000;
+    border-color: #fff; }
+    .btn--light:hover, .btn--light:focus {
+      background-color: transparent;
+      color: #000;
+      border-color: #000; }
 
 ul {
   list-style: none;
@@ -241,7 +433,15 @@ ul {
 
 label {
   display: block;
-  margin-bottom: 20px; }
+  color: gray; }
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-bottom: 3rem; }
+  input[type="radio"] + label,
+  input[type="checkbox"] + label {
+    display: inline-block;
+    margin-bottom: 3rem; }
 
 pre {
   background-color: #f5f5f5;
