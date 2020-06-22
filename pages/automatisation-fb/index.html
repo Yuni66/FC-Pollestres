@@ -1,18 +1,251 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FC Pollestres - Publication Facebook</title>
-    <meta name="description" content="Lorem ispum.">
+    <title>Publications Facebook FC Pollestres</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="../../dist/css/main.css">
 </head>
 <body>
     <div class="container">
-        <h1>FC Pollestres</h1>
+        <h1>Publications Facebook FC Pollestres</h1>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias illo iusto laboriosam placeat quisquam sequi tempora temporibus vel, voluptates? Aperiam deleniti dolor ipsum iste libero natus necessitatibus obcaecati, tempore.</p>
+        <form action="" method="post">
+            <div class="form-line">
+                <div class="form-block form-base">
+                    <select name="type_publi" id="type_publi" required>
+                        <option value="" selected disabled></option>
+                        <option value="programm">Programme du week-end</option>
+                        <option value="result">Résultats du week-end</option>
+                        <option value="featured">Match à la une</option>
+                        <option value="resultmatch">Résultat match à la une</option>
+                    </select>
+                    <label for="type_publi">Type de publication</label>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <div class="form-block u-hidden" data-annonce="true" data-result="true">
+                    <select name="category" id="category" required>
+                        <option value="" selected disabled></option>
+                        <option value="u7">U7</option>
+                        <option value="u9">U9</option>
+                        <option value="u11">U11</option>
+                        <option value="u15">U15</option>
+                        <option value="u18f">U18Féminines</option>
+                        <option value="seniors">Séniors</option>
+                        <option value="seniorsf8">SéniorsFéminines à 8</option>
+                        <option value="seniorsf11">SéniorsFéminines R1</option>
+                    </select>
+                    <label for="category">Catégorie</label>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <div class="form-block u-hidden" data-featured="true">
+                    <input type="text" name="compet" id="compet" placeholder="Exemple : Coupe de France">
+                    <label for="compet">Type de compétition</label>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <div class="form-block u-hidden" data-annonce="true">
+                    <select name="day" id="day" required>
+                        <option value="" selected disabled></option>
+                        <option value="samedi">Samedi</option>
+                        <option value="dimanche">Dimanche</option>
+                        <option value="lundi">Lundi</option>
+                        <option value="mardi">Mardi</option>
+                        <option value="mercredi">Mercredi</option>
+                        <option value="jeudi">Jeudi</option>
+                        <option value="vendredi">Vendredi</option>
+                    </select>
+                    <label for="day">Jour</label>
+                </div>
+
+                <div class="form-block u-hidden" data-annonce="true">
+                    <select name="date" id="date" required>
+                        <option value="" selected disabled></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    <label for="date">Date</label>
+                </div>
+
+                <div class="form-block u-hidden" data-annonce="true">
+                    <select name="month" id="month" required>
+                        <option value="" selected disabled></option>
+                        <option value="Janvier">Janvier</option>
+                        <option value="Février">Février</option>
+                        <option value="Mars">Mars</option>
+                        <option value="Avril">Avril</option>
+                        <option value="Mai">Mai</option>
+                        <option value="Juin">Juin</option>
+                        <option value="Juillet">Juillet</option>
+                        <option value="Août">Août</option>
+                        <option value="Septembre">Septembre</option>
+                        <option value="Octobre">Octobre</option>
+                        <option value="Novembre">Novembre</option>
+                        <option value="Décembre">Décembre</option>
+                    </select>
+                    <label for="month">Mois</label>
+                </div>
+
+                <div class="form-block u-hidden" data-annonce="true">
+                    <select name="hour" id="hour" required>
+                        <option value="" selected disabled></option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                    </select>
+                    <label for="hour">Heure</label>
+                </div>
+
+                <div class="form-block u-hidden" data-annonce="true">
+                    <select name="minuts" id="minuts" required>
+                        <option value="" selected disabled></option>
+                        <option value="00">00</option>
+                        <option value="05">05</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="30">30</option>
+                        <option value="35">35</option>
+                        <option value="40">40</option>
+                        <option value="45">45</option>
+                        <option value="50">50</option>
+                        <option value="55">55</option>
+                    </select>
+                    <label for="minuts">Minutes</label>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <div class="form-block u-hidden" data-annonce="true">
+                    <input id="domicile" name="location" type="radio" value="domicile" checked>
+                    <label for="domicile">Domicile</label>
+
+                    <input id="exterieur" name="location" type="radio" value="exterieur">
+                    <label for="exterieur">Extérieur</label>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <div class="form-block u-hidden" data-result="true">
+                    <input type="text" name="ourresult" id="ourresult">
+                    <label for="ourresult">Buts marqués</label>
+                </div>
+                <div class="form-block u-hidden" data-result="true">
+                    <input type="text" name="thereresult" id="thereresult">
+                    <label for="thereresult">Buts encaissés</label>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <div class="form-block u-hidden" data-annonce="true" data-result="true">
+                    <input type="text" name="adverse" id="adverse">
+                    <label for="adverse">Adversaire</label>
+                </div>
+            </div>
+
+            <div class="form-block u-hidden" data-annonce="true" data-result="true">
+                <select name="partners" id="partners" required>
+                    <option value="" selected disabled></option>
+                    <option value="airforcechauffage">Air Force Chauffage</option>
+                    <option value="ambianceenergie">Ambiance énergie</option>
+                    <option value="aqualand">Aqualand</option>
+                    <option value="aquatika">Aquatika</option>
+                    <option value="audreycoiffure">Audrey Coiffure</option>
+                    <option value="autopieces66">Auto pièces 66</option>
+                    <option value="azincendie">AZ incendie</option>
+                    <option value="cashgraines">Cash graines</option>
+                    <option value="emblematik">Emblematik</option>
+                    <option value="espacefoot">Espace foot</option>
+                    <option value="etsserran">Ets Serran</option>
+                    <option value="galiono">Galiono</option>
+                    <option value="gpconstruction">GP Construction</option>
+                    <option value="hypertroc">Hyper troc</option>
+                    <option value="jmt">JMT alimentation animale</option>
+                    <option value="lacomvermeille">La com' Vermeille</option>
+                    <option value="lavapederivesaltes">La Vape de Rivesaltes</option>
+                    <option value="ladyboy">Lady Boy</option>
+                    <option value="m2ap">M2AP</option>
+                    <option value="meublesalvarez">Meubles Alvarez</option>
+                    <option value="peinturesguix">Peintures Guix</option>
+                    <option value="perpignancampingcar">Perpignan Camping-car</option>
+                    <option value="pilpoiltoilettage">Pil'poil Toilettage</option>
+                    <option value="piscinespaland">Piscine Spa Land</option>
+                    <option value="pollestresimmo">Pollestres immo</option>
+                    <option value="vapotfrance">Vapot'France</option>
+                    <option value="visioptic">Visioptic</option>
+                </select>
+                <label for="partners">Partenaire présenté</label>
+            </div>
+
+            <div class="form-line">
+                <a class="btn btn-dark">Valider</a>
+            </div>
+        </form>
     </div>
+
+    <div class="container">
+        <div class="grid grid--2cols">
+            <div>
+                <pre class="list">
+                </pre>
+                <div class="agenda_ok">
+                    <a data-target="OK" class="mui-btn mui-btn">Agenda Terminé ?</a>
+                </div>
+            </div>
+            <div>
+                <div class="img"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../src/js/auto-publish.js"></script>
 
 </body>
 </html>

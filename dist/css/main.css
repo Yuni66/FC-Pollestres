@@ -105,7 +105,8 @@ optgroup {
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  color: #000; }
+  color: #000;
+  background-color: rgba(0, 0, 0, 0.1); }
 
 .container {
   margin: auto;
@@ -122,7 +123,8 @@ body {
 textarea {
   border: none;
   border-bottom: 1px solid #000;
-  background-color: #fff; }
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px; }
   :focus[type="text"], :focus[type="tel"], :focus[type="email"], :focus[type="url"], :focus[type="search"], :focus[type="date"], :focus[type="time"], :focus[type="datetime"], :focus[type="month"], :focus[type="week"], :focus[type="number"], :focus[type="password"], select:focus,
   textarea:focus {
     outline: none; }
@@ -236,6 +238,26 @@ ul {
 
 .header {
   background: url("../img/icon/logo.svg"); }
+
+label {
+  display: block;
+  margin-bottom: 20px; }
+
+pre {
+  background-color: #f5f5f5;
+  color: #333;
+  display: block;
+  line-height: 1.42857;
+  margin: 10px 0;
+  padding: 20px;
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow: auto;
+  border-left: 0.2rem solid #9b4dca; }
+
+.img img {
+  max-width: 100%;
+  margin-top: 10px; }
 
 @media (max-width: 319px) {
   .u-spacing-small {
