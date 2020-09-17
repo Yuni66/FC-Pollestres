@@ -1,6 +1,11 @@
+function showError() {
+    const error = $('.toast');
+    error.slideDown(300).delay(3000).slideUp(400);
+}
+
 function typePubli(dataType, blockText, libelle) {
-    let dataAnnonce = $('[data-annonce]');
-    let dataResult = $('[data-result]');
+    const dataAnnonce = $('[data-annonce]');
+    const dataResult = $('[data-result]');
     switch (dataType) {
         case 'programm':
              dataAnnonce.each(function() {
@@ -43,19 +48,19 @@ function submit(type, cible) {
     let line = '';
     let result, image;
 
-    let category = $('#category option:selected').text();
-    let compet = $('#compet').val();
+    const category = $('#category option:selected').text();
+    const compet = $('#compet').val();
 
-    let day = $('#day option:selected').text();
-    let date = $('#date option:selected').text();
-    let month = $('#month option:selected').text();
-    let hour = $('#hour option:selected').text();
-    let minuts = $('#minuts option:selected').text();
-    let location = $('input[name="location"]:checked').val();
-    let our = parseInt($('#ourresult').val());
-    let there = parseInt($('#thereresult').val());
-    let adverse = $('#adverse').val();
-    let partner = $('#partners').val();
+    const day = $('#day option:selected').text();
+    const date = $('#date option:selected').text();
+    const month = $('#month option:selected').text();
+    const hour = $('#hour option:selected').text();
+    const minuts = $('#minuts option:selected').text();
+    const location = $('input[name="location"]:checked').val();
+    const our = parseInt($('#ourresult').val());
+    const there = parseInt($('#thereresult').val());
+    const adverse = $('#adverse').val();
+    const partner = $('#partners').val();
 
     if (partner !== null) {
         image = '<img src="../../dist/img/fcp/partenaires/' + type + '/' + type + '-' + partner +'.jpg">';
@@ -85,7 +90,7 @@ function submit(type, cible) {
                     $('.img').html(image);
                 }
             } else {
-                $('.message').html('Veuillez remplir tous les champs');
+                showError();
             }
 
             break;
@@ -108,7 +113,7 @@ function submit(type, cible) {
                     $('.img').html(image);
                 }
             } else {
-                $('.message').html('Veuillez remplir tous les champs');
+                showError();
             }
 
             break;
@@ -137,7 +142,7 @@ function submit(type, cible) {
                     $('.img').html(image);
                 }
             } else {
-                $('.message').html('Veuillez remplir tous les champs');
+                showError();
             }
 
             break;
@@ -169,7 +174,7 @@ function submit(type, cible) {
                     $('.img').html(image);
                 }
             } else {
-                $('.message').html('Veuillez remplir tous les champs');
+                showError();
             }
 
             break;
@@ -192,11 +197,11 @@ $(function() {
     $('#type_publi').on('change', function(e) {
         e.preventDefault();
 
-        $('.list').html('');
         let preExport = $('.list');
+        preExport.html('');
 
-        let typePublication = $(this).val();
-        let libelleTypePublication = $('#type_publi option:selected').text();
+        const typePublication = $(this).val();
+        const libelleTypePublication = $('#type_publi option:selected').text();
 
         // On cache tous les champs de formulaire
         $('.form-block:not(.form-base)').each(function() {
