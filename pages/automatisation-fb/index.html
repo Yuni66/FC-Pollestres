@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Publications Facebook FC Pollestres</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="../../dist/css/main.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
             <div class="six columns">
                 <form action="" method="post">
                     <div class="row">
-                        <div class="twelve columns form-block form-base">
+                        <div class="six columns form-block form-base">
                             <label for="type_publi">Type de publication</label>
                             <select name="type_publi" id="type_publi" required>
                                 <option value="" selected disabled></option>
@@ -24,6 +24,42 @@
                                 <option value="featured">Match à la une</option>
                                 <option value="resultmatch">Résultat match à la une</option>
                             </select>
+                        </div>
+
+                        <div class="six columns">
+                            <div class="twelve columns form-block" data-annonce="true" data-result="true">
+                                <label for="partners">Partenaire présenté</label>
+                                <select name="partners" id="partners" required>
+                                    <option value="" selected disabled></option>
+                                    <option value="airforcechauffage">Air Force Chauffage</option>
+                                    <option value="ambianceenergie">Ambiance énergie</option>
+                                    <option value="aqualand">Aqualand</option>
+                                    <option value="aquatika">Aquatika</option>
+                                    <option value="audreycoiffure">Audrey Coiffure</option>
+                                    <option value="autopieces66">Auto pièces 66</option>
+                                    <option value="azincendie">AZ incendie</option>
+                                    <option value="cashgraines">Cash graines</option>
+                                    <option value="emblematik">Emblematik</option>
+                                    <option value="espacefoot">Espace foot</option>
+                                    <option value="etsserran">Ets Serran</option>
+                                    <option value="galiono">Galiono</option>
+                                    <option value="gpconstruction">GP Construction</option>
+                                    <option value="hypertroc">Hyper troc</option>
+                                    <option value="jmt">JMT alimentation animale</option>
+                                    <option value="lacomvermeille">La com' Vermeille</option>
+                                    <option value="lavapederivesaltes">La Vape de Rivesaltes</option>
+                                    <option value="ladyboy">Lady Boy</option>
+                                    <option value="m2ap">M2AP</option>
+                                    <option value="meublesalvarez">Meubles Alvarez</option>
+                                    <option value="peinturesguix">Peintures Guix</option>
+                                    <option value="perpignancampingcar">Perpignan Camping-car</option>
+                                    <option value="pilpoiltoilettage">Pil'poil Toilettage</option>
+                                    <option value="piscinespaland">Piscine Spa Land</option>
+                                    <option value="pollestresimmo">Pollestres immo</option>
+                                    <option value="vapotfrance">Vapot'France</option>
+                                    <option value="visioptic">Visioptic</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
@@ -45,7 +81,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="twelve columns form-block u-hidden" data-featured="true">
+                        <div class="twelve columns form-block u-hidden" data-featured="true" data-resultmatch="true">
                             <label for="compet">Type de compétition</label>
                             <input type="text" name="compet" id="compet" placeholder="Exemple : Coupe de France">
                         </div>
@@ -191,42 +227,6 @@
                         <div class="twelve columns form-block u-hidden" data-annonce="true" data-result="true">
                             <label for="adverse">Adversaire</label>
                             <input type="text" name="adverse" id="adverse">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="twelve columns form-block u-hidden" data-annonce="true" data-result="true">
-                            <label for="partners">Partenaire présenté</label>
-                            <select name="partners" id="partners" required>
-                                <option value="" selected disabled></option>
-                                <option value="airforcechauffage">Air Force Chauffage</option>
-                                <option value="ambianceenergie">Ambiance énergie</option>
-                                <option value="aqualand">Aqualand</option>
-                                <option value="aquatika">Aquatika</option>
-                                <option value="audreycoiffure">Audrey Coiffure</option>
-                                <option value="autopieces66">Auto pièces 66</option>
-                                <option value="azincendie">AZ incendie</option>
-                                <option value="cashgraines">Cash graines</option>
-                                <option value="emblematik">Emblematik</option>
-                                <option value="espacefoot">Espace foot</option>
-                                <option value="etsserran">Ets Serran</option>
-                                <option value="galiono">Galiono</option>
-                                <option value="gpconstruction">GP Construction</option>
-                                <option value="hypertroc">Hyper troc</option>
-                                <option value="jmt">JMT alimentation animale</option>
-                                <option value="lacomvermeille">La com' Vermeille</option>
-                                <option value="lavapederivesaltes">La Vape de Rivesaltes</option>
-                                <option value="ladyboy">Lady Boy</option>
-                                <option value="m2ap">M2AP</option>
-                                <option value="meublesalvarez">Meubles Alvarez</option>
-                                <option value="peinturesguix">Peintures Guix</option>
-                                <option value="perpignancampingcar">Perpignan Camping-car</option>
-                                <option value="pilpoiltoilettage">Pil'poil Toilettage</option>
-                                <option value="piscinespaland">Piscine Spa Land</option>
-                                <option value="pollestresimmo">Pollestres immo</option>
-                                <option value="vapotfrance">Vapot'France</option>
-                                <option value="visioptic">Visioptic</option>
-                            </select>
                         </div>
                     </div>
 

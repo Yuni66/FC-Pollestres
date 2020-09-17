@@ -1,21 +1,23 @@
 function typePubli(dataType, blockText, libelle) {
+    let dataAnnonce = $('[data-annonce]');
+    let dataResult = $('[data-result]');
     switch (dataType) {
         case 'programm':
-            $('[data-annonce]').each(function() {
+             dataAnnonce.each(function() {
                 $(this).removeClass('u-hidden');
             });
             blockText.append('[Agenda] ' + libelle + '<br />');
             break;
 
         case 'result':
-            $('[data-result]').each(function() {
+            dataResult.each(function() {
                 $(this).removeClass('u-hidden');
             });
             blockText.append('[Bilan] ' + libelle + '<br />');
             break;
 
         case 'featured':
-            $('[data-annonce]').each(function() {
+            dataAnnonce.each(function() {
                 $(this).removeClass('u-hidden');
             });
             $('[data-featured]').removeClass('u-hidden');
@@ -23,16 +25,17 @@ function typePubli(dataType, blockText, libelle) {
             break;
 
         case 'resultmatch':
-            $('[data-result]').each(function() {
+            dataResult.each(function() {
                 $(this).removeClass('u-hidden');
             });
-            blockText.html('[Résultat] L\'affiche du jour<br />');
+            $('[data-resultmatch]').removeClass('u-hidden');
+            blockText.html('[Résultat] L\'affiche du jour');
             break;
     }
 }
 
 function clean() {
-    $('form input:not([type="radio"]), form select:not(#type_publi)').val('');
+    $('form input:not([type="radio"]), form select:not(#type_publi):not(#partners)').val('');
     $('form input[name="location"]').prop('checked', false);
 }
 
@@ -41,7 +44,7 @@ function submit(type, cible) {
     let result, image;
 
     let category = $('#category option:selected').text();
-    let compet = $('#compet option:selected').text();
+    let compet = $('#compet').val();
 
     let day = $('#day option:selected').text();
     let date = $('#date option:selected').text();
@@ -53,8 +56,6 @@ function submit(type, cible) {
     let there = parseInt($('#thereresult').val());
     let adverse = $('#adverse').val();
     let partner = $('#partners').val();
-
-    console.log(partner);
 
     if (partner !== null) {
         image = '<img src="../../dist/img/fcp/partenaires/' + type + '/' + type + '-' + partner +'.jpg">';
@@ -117,10 +118,10 @@ function submit(type, cible) {
 
                 clean();
 
-                if ($('#compet').val() === '') {
-                    line = '<br />';
+                if (compet === '') {
+                    line += '<br />';
                 } else {
-                    line = ' | ' + compet + '<br />';
+                    line += ' | ' + compet + '<br />';
                 }
 
                 line += '#' + category + ' | ' + day + ' ' + date + ' ' + month + ' à ' + hour + 'H' + minuts + ' : ';
@@ -143,8 +144,16 @@ function submit(type, cible) {
 
         case 'resultmatch':
             if (category !== '' && our !== '' && there !== '' && adverse !== '') {
+                
+                console.log('test ' + compet);
 
                 clean();
+                
+                if (compet === '') {
+                    cible.append('<br />');
+                } else {
+                    cible.append(' | ' + compet + '<br />');
+                }
 
                 if (our > there) {
                     result = 'Fantastique victoire ' + our + ' à ' + there + ' contre ' + adverse + ' !!';
@@ -180,7 +189,6 @@ function agendaTermine(type, cible) {
 
 $(function() {
 
-    // Init formulaire
     $('#type_publi').on('change', function(e) {
         e.preventDefault();
 
@@ -190,7 +198,7 @@ $(function() {
         let typePublication = $(this).val();
         let libelleTypePublication = $('#type_publi option:selected').text();
 
-        // Init - On cache tous les champs de formulaire
+        // On cache tous les champs de formulaire
         $('.form-block:not(.form-base)').each(function() {
             $(this).addClass('u-hidden');
         });
