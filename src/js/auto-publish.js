@@ -1,5 +1,5 @@
 function showError() {
-    const error = $('.toast');
+    const error = $('.toast--error');
     error.slideDown(300).delay(3000).slideUp(400);
 }
 
