@@ -3,6 +3,14 @@ function showError() {
     error.slideDown(300).delay(3000).slideUp(400);
 }
 
+function getTeam(category) {
+    let team = 'FC Pollestres';    
+    if (category == 'U18Féminines R1') { 
+        team = 'Pollestres Cabestany'; 
+    }
+    return team;
+}
+
 function typePubli(dataType, blockText, libelle) {
     const dataAnnonce = $('[data-annonce]');
     const dataResult = $('[data-result]');
@@ -40,7 +48,7 @@ function typePubli(dataType, blockText, libelle) {
 }
 
 function clean() {
-    $('form input:not([type="radio"]), form select:not(#type_publi):not(#partners)').val('');
+    $('form input:not([type="radio"]), form select:not(#type-publi):not(#partners)').val('');
     $('form input[name="location"]').prop('checked', false);
 }
 
@@ -80,9 +88,9 @@ function submit(type, cible) {
                 line += '#' + category + ' | ' + day + ' ' + date + ' ' + month + ' à ' + hour + 'H' + minuts + ' : ';
 
                 if (location === 'domicile') {
-                    line += 'FC Pollestres - ' + adverse;
+                    line += getTeam(category) + ' - ' + adverse;
                 } else if (location === 'exterieur') {
-                    line += adverse + ' - FC Pollestres';
+                    line += adverse + ' - ' + getTeam(category);
                 }
                 cible.append(line + '<br />');
 
@@ -132,9 +140,9 @@ function submit(type, cible) {
                 line += '#' + category + ' | ' + day + ' ' + date + ' ' + month + ' à ' + hour + 'H' + minuts + ' : ';
 
                 if (location === 'domicile') {
-                    line += 'FC Pollestres - ' + adverse;
+                    line += getTeam(category) + ' - ' + adverse;
                 } else if (location === 'exterieur') {
-                    line += adverse + ' - FC Pollestres';
+                    line += adverse + ' - ' + getTeam(category);
                 }
                 cible.append(line + '<br /><br />Venez nombreux pour nous encourager lors de cette rencontre décisive !<br />Ensemble, nous ne faisons qu\'un !! #AllezPollestres');
 
@@ -194,14 +202,18 @@ function agendaTermine(type, cible) {
 
 $(function() {
 
-    $('#type_publi').on('change', function(e) {
+    $('.toast--info .btn').on('click', function() {
+        location.reload();
+    });
+
+    $('#type-publi').on('change', function(e) {
         e.preventDefault();
 
         let preExport = $('.list');
         preExport.html('');
 
         const typePublication = $(this).val();
-        const libelleTypePublication = $('#type_publi option:selected').text();
+        const libelleTypePublication = $('#type-publi option:selected').text();
 
         // On cache tous les champs de formulaire
         $('.form-block:not(.form-base)').each(function() {
@@ -209,6 +221,8 @@ $(function() {
         });
 
         typePubli(typePublication, preExport, libelleTypePublication);
+
+        $('.btn--dark').removeClass('u-hidden');
 
         $('.btn--dark').click(function(){
 
@@ -220,9 +234,10 @@ $(function() {
 
             agendaTermine(typePublication, preExport);
             $('.agenda--ok').addClass('u-hidden');
+            $('.toast--info').show();
+            $('form').addClass('u-hidden');
 
         });
-
 
     });
 

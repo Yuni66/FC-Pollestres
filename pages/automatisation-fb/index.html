@@ -19,11 +19,15 @@
 
         <div class="row">
             <div class="six columns">
+                <div class="toast toast--info">
+                    <p>Publication terminée !</p>
+                    <a class="btn btn--light">En créer une autre ?</a>
+                </div>
                 <form action="" method="post">
                     <div class="row">
                         <div class="six columns form-block form-base">
-                            <label for="type_publi">Type de publication</label>
-                            <select name="type_publi" id="type_publi" required>
+                            <label for="type-publi">Type de publication</label>
+                            <select name="type-publi" id="type-publi" required>
                                 <option value="" selected disabled></option>
                                 <option value="programm">Programme du week-end</option>
                                 <option value="result">Résultats du week-end</option>
@@ -78,8 +82,8 @@
                                 <option value="u9">U9</option>
                                 <option value="u11">U11</option>
                                 <option value="u15">U15</option>
-                                <option value="u18f">U18Féminines</option>
-                                <option value="seniors">Séniors</option>
+                                <option value="u18f">U18Féminines R1</option>
+                                <option value="seniors">Séniors D4</option>
                                 <option value="seniorsf8">SéniorsFéminines à 8</option>
                                 <option value="seniorsf11">SéniorsFéminines R1</option>
                             </select>
@@ -237,7 +241,7 @@
                     </div>
 
                     <div class="row">
-                        <a class="btn btn--dark">Valider</a>
+                        <a class="btn btn--dark btn-valid-line u-hidden">Valider</a>
                     </div>
                 </form>
             </div>
