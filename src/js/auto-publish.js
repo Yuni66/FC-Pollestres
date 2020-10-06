@@ -4,22 +4,29 @@ function showError() {
 }
 
 function getTeam(category) {
-    let team = 'FC Pollestres';    
-    if (category == 'U18Féminines R1') { 
-        team = 'Pollestres Cabestany'; 
+    let team = 'FC Pollestres';
+    switch (category) {
+        case "U18Féminines R1":
+            team = 'Pollestres Cabestany'; 
+            break;
+        case "SéniorsFéminines à 8":
+            team = 'FC Pollestres 2'
+            break;
     }
     return team;
 }
+
 
 function typePubli(dataType, blockText, libelle) {
     const dataAnnonce = $('[data-annonce]');
     const dataResult = $('[data-result]');
     switch (dataType) {
         case 'programm':
-             dataAnnonce.each(function() {
+            dataAnnonce.each(function() {
                 $(this).removeClass('u-hidden');
             });
             blockText.append('[Agenda] ' + libelle + '<br />');
+            $('[data-kids], [data-plateau="true"]').addClass('u-hidden');
             break;
 
         case 'result':
@@ -49,7 +56,7 @@ function typePubli(dataType, blockText, libelle) {
 
 function clean() {
     $('form input:not([type="radio"]), form select:not(#type-publi):not(#partners)').val('');
-    $('form input[name="location"]').prop('checked', false);
+    $('form input[name="location"], form #plateau').prop('checked', false);
 }
 
 function submit(type, cible) {
@@ -70,6 +77,9 @@ function submit(type, cible) {
     const adverse = $('#adverse').val();
     const partner = $('#partners').val();
 
+    ($('[data-kids] input').is(":checked")) ? hasKids = 'yes' : hasKids = '' ;
+    const plateau = $('#plateau-place').val();
+
     if (partner !== null) {
         image = '<img src="../../dist/img/fcp/partenaires/' + type + '/' + type + '-' + partner +'.jpg">';
     }
@@ -81,17 +91,27 @@ function submit(type, cible) {
     // Analyser les résultats
     switch (type) {
         case 'programm':
-            if (category !== '' && day !== '' && date !== '' && month !== '' && hour !== '' && minuts !== '' && adverse !== '' && location !== '') {
+            if (category !== '' && day !== '' && date !== '' && month !== '' && hour !== '' && minuts !== '') {
 
                 clean();
+                $('[data-kids], [data-plateau="true"]').addClass('u-hidden');
+                $('[data-plateau="false"]').each(function() {
+                    $(this).removeClass('u-hidden');
+                });
 
-                line += '#' + category + ' | ' + day + ' ' + date + ' ' + month + ' à ' + hour + 'H' + minuts + ' : ';
+                if ((category == "U7" || category == "U9" || category == "U11" || category == "U13") && hasKids == 'yes') {
+                    line += '#' + category + ' | ' + day + ' ' + date + ' ' + month + ' dès ' + hour + 'H' + minuts + ' : Plateau à ' + plateau;
 
-                if (location === 'domicile') {
-                    line += getTeam(category) + ' - ' + adverse;
-                } else if (location === 'exterieur') {
-                    line += adverse + ' - ' + getTeam(category);
+                } else {
+                    line += '#' + category + ' | ' + day + ' ' + date + ' ' + month + ' à ' + hour + 'H' + minuts + ' : ';
+
+                    if (location === 'domicile') {
+                        line += getTeam(category) + ' - ' + adverse;
+                    } else if (location === 'exterieur') {
+                        line += adverse + ' - ' + getTeam(category);
+                    }
                 }
+                
                 cible.append(line + '<br />');
 
                 if (image !== '') {
@@ -222,21 +242,32 @@ $(function() {
 
         typePubli(typePublication, preExport, libelleTypePublication);
 
+        if (typePublication == 'programm') {
+            $('#category').on('change', function() {
+                let categoryType = $('#category option:selected').text();
+                if (categoryType == "U7" || categoryType == "U9" || categoryType == "U11" || categoryType == "U13") {
+                    $('[data-kids]').removeClass('u-hidden');
+                } else {
+                    $('[data-kids]').addClass('u-hidden');
+                }
+            });
+        }
+
+        $('[data-kids]').on('change', function(e) {
+            $('[data-plateau]').toggleClass('u-hidden');
+        });
+
         $('.btn--dark').removeClass('u-hidden');
 
         $('.btn--dark').click(function(){
-
             submit(typePublication, preExport);
-
         });
 
         $('[data-target="OK"]').click(function(){
-
             agendaTermine(typePublication, preExport);
             $('.agenda--ok').addClass('u-hidden');
             $('.toast--info').show();
             $('form').addClass('u-hidden');
-
         });
 
     });

@@ -81,8 +81,12 @@
                                 <option value="u7">U7</option>
                                 <option value="u9">U9</option>
                                 <option value="u11">U11</option>
+                                <option value="u13">U13</option>
+                                <option value="u1315">U13/U15Féminines</option>
                                 <option value="u15">U15</option>
+                                <option value="u17">U17 D2</option>
                                 <option value="u18f">U18Féminines R1</option>
+                                <option value="u19">U19</option>
                                 <option value="seniors">Séniors D4</option>
                                 <option value="seniorsf8">SéniorsFéminines à 8</option>
                                 <option value="seniorsf11">SéniorsFéminines R1</option>
@@ -94,6 +98,19 @@
                         <div class="twelve columns form-block u-hidden" data-featured="true" data-resultmatch="true">
                             <label for="compet">Type de compétition</label>
                             <input type="text" name="compet" id="compet" placeholder="Exemple : Coupe de France">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="four columns form-block u-hidden" data-kids="true">
+                            <label for="plateau">
+                                <input type="checkbox" name="plateau" id="plateau">
+                                <span>Plateau ?</span>
+                            </label>
+                        </div>
+                        <div class="eight columns form-block u-hidden" data-plateau="true">
+                            <label for="plateau-place">Lieu du plateau</label>
+                            <input type="text" name="plateau-place" id="plateau-place">
                         </div>
                     </div>
 
@@ -209,7 +226,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-block u-hidden" data-annonce="true">
+                        <div class="form-block u-hidden" data-annonce="true" data-plateau="false">
                             <div class="three columns">
                                 <input id="domicile" name="location" type="radio" value="domicile">
                                 <label for="domicile">Domicile</label>
@@ -234,7 +251,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="twelve columns form-block u-hidden" data-annonce="true" data-result="true">
+                        <div class="twelve columns form-block u-hidden" data-annonce="true" data-result="true" data-plateau="false">
                             <label for="adverse">Adversaire</label>
                             <input type="text" name="adverse" id="adverse">
                         </div>
